@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--Angga Putera Ramadhan
+	3411181147
+	DSE-C -->
+<html>
+<head>
+	<title>Tugas Implementasi Interface</title>
+</head>
+<body>
+	<form name="formTugas" action="" onsubmit="return validateForm()" method="POST">
+		<input type="text" name="username" id="username" placeholder="Username" ><br>
+		<input type="password" name="password" id="pass" placeholder="Password"><br>
+		<input type="password" name="repeat" id="repeat" placeholder="Ulangi Password"><br>
+		<input type="text" name="email" id="email" placeholder="Email"><br>
+		<input type="text" name="telp" id="telp" placeholder="Nomor Telpon"><br>
+		<textarea id="alamat" style="width: 167px;" placeholder="Alamat"></textarea><br>
+		<input type="submit" name="" value="Submit">
+	</form>
+	<script type="text/javascript"> function validateForm(){
+		var username = document.formTugas.username.value;
+		var passformat = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{4,}$/;
+		var pass1 = document.formTugas.pass.value;	
+		var pass2 = document.formTugas.repeat.value;
+		var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+		var email = document.formTugas.email.value;
+		var telpformat = /^\d{10,12}$/;
+		var telpon = document.formTugas.telp.value;
+		var addresspattern = /^\w.{1,}$/;
+		var address = document.formTugas.alamat.value;
+		if ((username.length < 3) || (username.length > 15)){
+			alert("Username harus 3-15 digit"); 
+			return false;
+		}else if(!pass1.match(passformat)){
+				alert("Password min 4 digit harus ada Huruf besar Symbol dan Angka");
+				return false;
+			}
+		else if(pass2 != pass1){
+				alert("Password harus sama dengan yang dimasukkan pada kolom isi password");
+				return false;
+			}
+		else if(!email.match(mailformat)){
+			alert("Tidak sesuai dengan Format Email");
+			return false;
+		}
+		else if(!telpon.match(telpformat)){
+			alert("Nomor Telpon 10-12 Digit");
+			return false;
+		}
+		else if(!address.match(addresspattern)){
+			alert("Alamat tidak boleh kosong");
+			return false;
+		}
+			return true;
+	}
+	</script>
+</body>
+</html>
